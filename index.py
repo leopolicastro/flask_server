@@ -2,9 +2,9 @@ from flask import Flask, jsonify
 import requests
 from bs4 import BeautifulSoup
 import pprint
-
+from flask_cors import CORS
 app = Flask(__name__)
-
+cors = CORS(app)
 def sort_stories_by_votes(hnlist):
   return sorted(hnlist, key= lambda k:k['votes'], reverse=True)
 
