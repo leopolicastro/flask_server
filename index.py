@@ -36,4 +36,5 @@ def display():
   return create_custom_hn(mega_links, mega_subtext)
 
 if __name__=='__main__':
-    app.run(debug=True, port=8080)
+    app.run()
+    # app.run(debug=True, port=8080)
