@@ -1,10 +1,12 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from News import news
+from Bitcoin import bitcoin
 
 app = Flask(__name__)
 cors = CORS(app)
 app.register_blueprint(news)
+app.register_blueprint(bitcoin)
 
 @app.route("/")
 def hello():
