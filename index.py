@@ -11,5 +11,5 @@ def hello():
     return "this is my flask app"
 
 if __name__ == "__main__":
-    # app.run()
-    app.run(debug=True, port=8080)
+    app.run()
+    # app.run(debug=True, port=8080)
