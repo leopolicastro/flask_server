@@ -12,18 +12,18 @@ API_TOKEN = os.getenv("GIT_TOKEN")
 url = GITHUB_API + "/gists"
 print("Request URL: %s" % url)
 
-# print headers,parameters,payload
+# set headers,parameters,payload
 headers = {"Authorization": "token %s" % API_TOKEN}
 params = {"scope": "gist"}
+payload = {
+        "description": "my gists",
+        "public": True,
+    }
 
 
 @github.route("/github/", methods=["POST"])
 def git():
     result = json.loads(request.data.decode("utf-8"))
-    payload = {
-        "description": "my gists",
-        "public": True,
-    }
     payload.update(result)
     res = requests.post(url, headers=headers, params=params, data=json.dumps(payload))
     j = json.loads(res.text)
