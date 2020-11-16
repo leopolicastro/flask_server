@@ -22,7 +22,7 @@ payload = {
 }
 
 
-@github.route("/github/", methods=["POST", "GET"])
+@github.route("/github/gists/", methods=["POST", "GET"])
 def git():
     if request.method == "POST":
         result = json.loads(request.data.decode("utf-8"))
@@ -46,3 +46,11 @@ def git():
             if len(result) < 100:
                 run = False
         return jsonify(gist_array)
+
+
+@github.route("/github/gist/<id>", methods=["GET"])
+def gist(id):
+    print(id)
+    res = requests.get(url + f"/{id}", headers=headers, params=params)
+    result = json.loads(res.content.decode("utf-8"))
+    return result
