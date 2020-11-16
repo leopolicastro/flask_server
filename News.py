@@ -3,7 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 import pprint
 
-news = Blueprint('news', __name__)
+news = Blueprint("news", __name__)
+
 
 def sort_stories_by_votes(hnlist):
     return sorted(hnlist, key=lambda k: k["votes"], reverse=True)
@@ -20,6 +21,7 @@ def create_custom_hn(links, subtext):
             if points > 99:
                 hn.append({"title": title, "link": href, "votes": points})
     return jsonify(sort_stories_by_votes(hn))
+
 
 @news.route("/news")
 def display():
