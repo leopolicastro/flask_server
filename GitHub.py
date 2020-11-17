@@ -8,6 +8,7 @@ github = Blueprint("github", __name__)
 
 GITHUB_API = "https://api.github.com"
 API_TOKEN = os.getenv("GIT_TOKEN")
+GIT_USERNAME = os.getenv("GIT_USERNAME")
 
 # form a request URL
 url = GITHUB_API + "/gists"
@@ -17,7 +18,7 @@ print("Request URL: %s" % url)
 headers = {"Authorization": "token %s" % API_TOKEN}
 params = {"scope": "gist"}
 payload = {
-    "description": "my gists",
+    "description": "gist created with python code",
     "public": True,
 }
 
@@ -47,10 +48,14 @@ def git():
                 run = False
         return jsonify(gist_array)
 
-
 @github.route("/github/gist/<id>", methods=["GET"])
 def gist(id):
-    print(id)
     res = requests.get(url + f"/{id}", headers=headers, params=params)
+    result = json.loads(res.content.decode("utf-8"))
+    return result
+
+@github.route("/github/auth/", methods=["GET"])
+def auth():
+    res = requests.get(GITHUB_API + f"/users/{GIT_USERNAME}")
     result = json.loads(res.content.decode("utf-8"))
     return result
