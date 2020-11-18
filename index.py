@@ -4,7 +4,6 @@ from flask_cors import CORS
 from routes.News import news
 from routes.GitHub import github
 from routes.Bitcoin import bitcoin
-from routes.Wallet import wallet
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -16,7 +15,6 @@ cors = CORS(app)
 app.register_blueprint(news)
 app.register_blueprint(bitcoin)
 app.register_blueprint(github)
-app.register_blueprint(wallet)
 
 
 @app.route("/")
