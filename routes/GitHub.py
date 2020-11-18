@@ -1,8 +1,8 @@
-from flask import Blueprint, jsonify, redirect, url_for, request
+from flask import Blueprint, jsonify, request
 import requests
 import json
 import os
-import numpy as np
+
 
 github = Blueprint("github", __name__)
 

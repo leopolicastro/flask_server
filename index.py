@@ -1,9 +1,9 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from News import news
-from Bitcoin import bitcoin
+from routes.News import news
+from routes.GitHub import github
+from routes.Bitcoin import bitcoin
 from dotenv import load_dotenv
-from GitHub import github
 
 load_dotenv()
 
